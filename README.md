@@ -60,10 +60,10 @@ rank_goal:   RADIANT
 
 ```
 ╔════════════════════════════════════════╗
-║      CHEDRIC MATTHIE BITUIN            ║
-║           DEAD OR ALIVE                ║
+║         CHEDRIC MATTHIE BITUIN         ║
+║             DEAD OR ALIVE              ║
 ║      (mostly alive, barely awake)      ║
-║      ฿ 3,000,000,000  BOUNTY           ║
+║        ฿ 3,000,000,000  BOUNTY         ║
 ║   Crime: Shipping apps past bedtime    ║
 ╚════════════════════════════════════════╝
 ```
