@@ -10,6 +10,9 @@
     <meta name="description" content="Personal portfolio of Chedric Matthie Bituin, BS Information Technology student at National University Clark.">
 
     <style>
+
+        /* ===== GLOBAL SETTINGS ===== */
+
         * {
             margin: 0;
             padding: 0;
@@ -17,25 +20,36 @@
             scroll-behavior: smooth;
         }
 
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background: #09090f;
-            color: #ffffff;
-            line-height: 1.6;
-        }
-
         :root {
             --purple: #a855f7;
             --light-purple: #c084fc;
-            --dark: #09090f;
-            --card: #151320;
+            --dark: #08060d;
+            --card: #15111f;
             --text: #b8b5c9;
         }
 
-        /* NAVIGATION */
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--dark);
+            background-image:
+                radial-gradient(circle at 15% 20%, rgba(147,51,234,0.10), transparent 35%),
+                radial-gradient(circle at 85% 80%, rgba(88,28,135,0.10), transparent 35%),
+                linear-gradient(rgba(168,85,247,0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(168,85,247,0.025) 1px, transparent 1px);
+            background-size: auto, auto, 40px 40px, 40px 40px;
+            color: white;
+            line-height: 1.6;
+        }
+
+        ::selection {
+            background: var(--purple);
+            color: white;
+        }
+
+        /* ===== NAVIGATION ===== */
 
         header {
-            background: rgba(9, 9, 15, 0.95);
+            background: rgba(8,6,13,0.95);
             padding: 20px 8%;
             display: flex;
             justify-content: space-between;
@@ -43,29 +57,32 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 1px solid #292039;
+            border-bottom: 1px solid #30203f;
             backdrop-filter: blur(12px);
         }
 
         .logo {
-            font-size: 23px;
+            font-size: 24px;
             font-weight: bold;
             color: var(--light-purple);
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px #a855f755;
         }
 
         nav a {
             color: #d4d0df;
             text-decoration: none;
             margin-left: 22px;
-            transition: 0.3s;
             font-size: 14px;
+            transition: 0.3s;
         }
 
         nav a:hover {
             color: var(--light-purple);
+            text-shadow: 0 0 10px var(--purple);
         }
 
-        /* GENERAL SECTIONS */
+        /* ===== GENERAL SECTIONS ===== */
 
         section {
             padding: 90px 10%;
@@ -78,11 +95,17 @@
             margin-bottom: 40px;
         }
 
+        .section-title::before {
+            content: "// ";
+            color: #7943a3;
+            font-size: 22px;
+        }
+
         .section-title span {
             color: var(--purple);
         }
 
-        /* HOME */
+        /* ===== HOME SECTION ===== */
 
         .hero {
             min-height: 85vh;
@@ -96,7 +119,43 @@
             max-width: 650px;
         }
 
-        .hero-text .greeting {
+        .gamer-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 15px;
+            margin-bottom: 20px;
+            border: 1px solid #542b75;
+            border-radius: 6px;
+            background: rgba(168,85,247,0.08);
+            color: var(--light-purple);
+            font-size: 11px;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #a855f7;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #a855f7;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+                box-shadow: 0 0 10px #a855f7;
+            }
+
+            50% {
+                opacity: 0.4;
+                box-shadow: 0 0 2px #a855f7;
+            }
+        }
+
+        .greeting {
             color: var(--light-purple);
             font-size: 18px;
             margin-bottom: 10px;
@@ -106,10 +165,12 @@
             font-size: clamp(35px, 5vw, 58px);
             line-height: 1.2;
             margin-bottom: 20px;
+            text-shadow: 0 0 25px #a855f722;
         }
 
         .hero-text h1 span {
             color: var(--purple);
+            text-shadow: 0 0 20px #a855f755;
         }
 
         .hero-text p {
@@ -127,8 +188,18 @@
             object-fit: cover;
             border-radius: 50%;
             border: 4px solid var(--purple);
-            box-shadow: 0 0 35px #a855f755;
+            box-shadow:
+                0 0 15px #a855f755,
+                0 0 45px #a855f733;
+            transition: 0.4s;
         }
+
+        .profile-pic:hover {
+            transform: scale(1.04);
+            box-shadow: 0 0 50px #a855f788;
+        }
+
+        /* ===== BUTTONS ===== */
 
         .btn {
             display: inline-block;
@@ -136,19 +207,38 @@
             padding: 13px 26px;
             background: var(--purple);
             color: white;
+            border: 1px solid var(--light-purple);
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
             transition: 0.3s;
+            box-shadow: 0 0 12px #a855f733;
         }
 
         .btn:hover {
             background: #9333ea;
             transform: translateY(-4px);
-            box-shadow: 0 0 20px #a855f766;
+            box-shadow: 0 0 25px #a855f766;
         }
 
-        /* ABOUT */
+        /* ===== GAMING HUD ===== */
+
+        .hud-line {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            color: #8b7c9e;
+            font-size: 11px;
+            letter-spacing: 1px;
+            margin-top: 25px;
+        }
+
+        .hud-line span {
+            color: var(--light-purple);
+            font-weight: bold;
+        }
+
+        /* ===== ABOUT SECTION ===== */
 
         .about-card {
             background: var(--card);
@@ -156,6 +246,12 @@
             border-radius: 15px;
             padding: 40px;
             text-align: center;
+            transition: 0.3s;
+        }
+
+        .about-card:hover {
+            border-color: var(--purple);
+            box-shadow: 0 0 25px #a855f722;
         }
 
         .about-card p {
@@ -175,7 +271,7 @@
             color: var(--light-purple);
         }
 
-        /* SKILLS */
+        /* ===== SKILLS SECTION ===== */
 
         .skills-container {
             display: flex;
@@ -197,7 +293,7 @@
         .skill-card:hover {
             transform: translateY(-8px);
             border-color: var(--purple);
-            box-shadow: 0 0 20px #a855f733;
+            box-shadow: 0 0 20px #a855f744;
         }
 
         .skill-icon {
@@ -214,18 +310,17 @@
             font-size: 14px;
         }
 
-        /* PROJECTS */
+        /* ===== PROJECTS SECTION ===== */
 
         .project-container {
             display: grid;
-            grid-template-columns: repeat(
-                auto-fit,
-                minmax(240px, 1fr)
-            );
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 25px;
         }
 
         .project-card {
+            position: relative;
+            overflow: hidden;
             background: var(--card);
             border: 1px solid #302343;
             padding: 30px;
@@ -233,10 +328,30 @@
             transition: 0.3s;
         }
 
+        .project-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                var(--light-purple),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .project-card:hover::before {
+            left: 100%;
+        }
+
         .project-card:hover {
             transform: translateY(-8px);
             border-color: var(--purple);
-            box-shadow: 0 0 25px #a855f722;
+            box-shadow: 0 0 25px #a855f733;
         }
 
         .project-icon {
@@ -259,9 +374,12 @@
             margin-top: 18px;
             padding: 5px 12px;
             border-radius: 20px;
+            border: 1px solid #653b89;
             background: #2e1b43;
             color: #d8b4fe;
-            font-size: 12px;
+            font-size: 11px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         .project-card a {
@@ -275,7 +393,7 @@
             color: white;
         }
 
-        /* CONTACT */
+        /* ===== CONTACT SECTION ===== */
 
         .contact {
             background: var(--card);
@@ -287,9 +405,10 @@
 
         .contact p {
             color: var(--text);
+            margin-bottom: 10px;
         }
 
-        /* FOOTER */
+        /* ===== FOOTER ===== */
 
         footer {
             background: #050509;
@@ -298,13 +417,14 @@
             text-align: center;
             color: #777187;
             font-size: 14px;
+            letter-spacing: 1px;
         }
 
         footer span {
             color: var(--light-purple);
         }
 
-        /* MOBILE RESPONSIVENESS */
+        /* ===== MOBILE RESPONSIVENESS ===== */
 
         @media (max-width: 768px) {
 
@@ -336,6 +456,10 @@
                 height: 210px;
             }
 
+            .hud-line {
+                justify-content: center;
+            }
+
             section {
                 padding: 65px 6%;
             }
@@ -344,14 +468,16 @@
                 padding: 25px;
             }
         }
+
     </style>
 </head>
 
 <body>
 
-    <!-- NAVIGATION -->
+    <!-- ===== NAVIGATION ===== -->
 
     <header>
+
         <div class="logo">CMB.</div>
 
         <nav>
@@ -361,14 +487,20 @@
             <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
         </nav>
+
     </header>
 
 
-    <!-- HOME SECTION -->
+    <!-- ===== HOME SECTION ===== -->
 
     <section class="hero" id="home">
 
         <div class="hero-text">
+
+            <div class="gamer-status">
+                <span class="status-dot"></span>
+                PLAYER 01 // SYSTEM ONLINE
+            </div>
 
             <p class="greeting">
                 Hello there! Welcome to my portfolio.
@@ -388,15 +520,19 @@
                 and journey in Information Technology.
             </p>
 
+            <div class="hud-line">
+                <div><span>LEVEL:</span> 01</div>
+                <div><span>CLASS:</span> IT STUDENT</div>
+                <div><span>STATUS:</span> LEARNING</div>
+            </div>
+
             <a href="#projects" class="btn">
-                Explore My Projects
+                Explore My Projects →
             </a>
 
         </div>
 
         <div class="profile-container">
-
-            <!-- Replace profile.jpg with your actual picture -->
 
             <img
                 src="assets/me.jpg"
@@ -409,7 +545,7 @@
     </section>
 
 
-    <!-- ABOUT ME -->
+    <!-- ===== ABOUT ME ===== -->
 
     <section id="about">
 
@@ -466,7 +602,7 @@
     </section>
 
 
-    <!-- PROGRAMMING SKILLS -->
+    <!-- ===== PROGRAMMING SKILLS ===== -->
 
     <section id="skills">
 
@@ -477,30 +613,42 @@
         <div class="skills-container">
 
             <div class="skill-card">
+
                 <div class="skill-icon">☕</div>
+
                 <h3>Java</h3>
+
                 <p>
                     Programming fundamentals,
                     logic, and problem-solving.
                 </p>
+
             </div>
 
             <div class="skill-card">
+
                 <div class="skill-icon">🌐</div>
+
                 <h3>HTML</h3>
+
                 <p>
                     Learning website structure
                     and development.
                 </p>
+
             </div>
 
             <div class="skill-card">
+
                 <div class="skill-icon">🎨</div>
+
                 <h3>CSS</h3>
+
                 <p>
                     Learning website styling
                     and design.
                 </p>
+
             </div>
 
         </div>
@@ -508,7 +656,7 @@
     </section>
 
 
-    <!-- PROJECTS -->
+    <!-- ===== PROJECTS ===== -->
 
     <section id="projects">
 
@@ -608,7 +756,7 @@
     </section>
 
 
-    <!-- CONTACT -->
+    <!-- ===== CONTACT ===== -->
 
     <section id="contact">
 
@@ -633,7 +781,7 @@
                 rel="noopener noreferrer"
                 class="btn"
             >
-                Visit My GitHub
+                Visit My GitHub →
             </a>
 
         </div>
@@ -641,7 +789,7 @@
     </section>
 
 
-    <!-- FOOTER -->
+    <!-- ===== FOOTER ===== -->
 
     <footer>
 
@@ -652,6 +800,10 @@
 
         <p>
             Designed and Developed with passion.
+        </p>
+
+        <p style="margin-top: 10px; font-size: 11px;">
+            PLAYER 01 // END OF TRANSMISSION
         </p>
 
     </footer>
